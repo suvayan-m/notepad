@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Notepad</title> -->
+    <meta
+      name="description"
+      content="A simple notepad app using JavaScript to store notes in localStorage."
+    />
+    <meta
+      name="keywords"
+      content="JavaScript, Notepad, LocalStorage, Notes, Simple App"
+    />
+    <meta name="author" content="Suvayan Mondal" />
+    <title>Notepad App - JavaScript</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+      body {
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background: #212529;
+      }
+      .app {
+        height: 100vh;
+        padding: 1rem;
+        background: inherit;
+      }
+      textarea {
+        font-family: inherit;
+        line-height: 1.25;
+        font-size: 1.5rem;
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: 1px dashed #f8f9fa;
+        resize: none;
+        background: inherit;
+        color: #f8f9fa;
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <textarea
+        name="notes"
+        id="notes"
+        placeholder="Type anything..."
+      ></textarea>
+    </div>
+    <script>
+      // Get reference to the textarea element
+      const textarea = document.getElementById("notes");
+
+      // Load saved note from localStorage (if it exists)
+      const savedNote = localStorage.getItem("note");
+      if (savedNote) {
+        textarea.value = savedNote;
+      }
+
+      // Save the note to localStorage whenever it changes
+      textarea.addEventListener("input", () => {
+        localStorage.setItem("note", textarea.value);
+      });
+
+      // Focus the textarea on page load
+      textarea.focus();
+    </script>
+  </body>
+</html>
